@@ -1,19 +1,18 @@
 package msg
 
 type IStrategy interface {
-
 	// GetCategory returns the category of the strategy.
 	getType() Category
 	// 消息处理
 	doHandle(msgList []*MsgRecord)
 }
 
-type AbstractStrategy struct {
-	impl IStrategy
+type InitStrategy struct {
+	IStrategy
 }
 
-func (a *AbstractStrategy) execute(msgList []*MsgRecord) {
-	impl := a.impl
+func (i *InitStrategy) execute(msgList []*MsgRecord) {
+	impl := i.IStrategy
 
 	if strategy, ok := Factory[impl.getType()]; ok {
 
@@ -23,7 +22,7 @@ func (a *AbstractStrategy) execute(msgList []*MsgRecord) {
 
 }
 
-func (a *AbstractStrategy) doHandle(msgList []*MsgRecord, predicate Predicate) {
+func (i *InitStrategy) doHandle(msgList []*MsgRecord, predicate Predicate) {
 	if msgList == nil {
 		return
 	}

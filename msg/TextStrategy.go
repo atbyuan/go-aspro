@@ -6,7 +6,7 @@ func init() {
 }
 
 type TextStrategy struct {
-	AbstractStrategy
+	InitStrategy
 }
 
 func (t TextStrategy) getType() Category {
@@ -15,7 +15,7 @@ func (t TextStrategy) getType() Category {
 
 func (t TextStrategy) doHandle(msgList []*MsgRecord) {
 
-	t.AbstractStrategy.doHandle(msgList, func(msg *MsgRecord) bool {
+	t.InitStrategy.doHandle(msgList, func(msg *MsgRecord) bool {
 
 		return true
 	})
