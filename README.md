@@ -1,3 +1,3 @@
-## orpsa
+## go-aspro
 
 Golang version of `aspro`.
